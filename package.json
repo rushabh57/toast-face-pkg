@@ -1,0 +1,36 @@
+{
+  "name": "toast-face",
+  "version": "1.0.0",
+  "description": "A modern and customizable toast notification library for React",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "scripts": {
+    "build": "vite build"
+  },
+  "keywords": [
+    "toast",
+    "react-toast",
+    "toastface",
+    "notification",
+    "react",
+    "toast-library"
+  ],
+  "author": "rushabh",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/toast-face"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}
