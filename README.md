@@ -1,31 +1,24 @@
-# 🥐 Toastface
+# toast-face
 
-**Toastface** is a modern, customizable, and minimal toast notification library for React with built-in support for custom icons, animations, loaders, notifications, dark mode, and more.
+A modern and customizable toast notification library for React. Lightweight, queue-based, and easy to use with support for success, error, warning, info, and custom notification types.
 
-![Toastface Demo](./image.png)
 
----
+click the demo link for more
+![Demo](https://rushabh57.github.io/toastface-lib/)
 
-## 🚀 Features
+## ✨ Features
 
-- 🔥 Light and Dark modes
-- ✅ Success, Error, Warning, Default, Custom, and Notification styles
-- ⏳ Built-in loader animation with customizable duration
-- 🎨 Pass your own icons or use built-in SVGs
-- 🎬 Popup, slide, squeezy animations
-- 🔁 Queue, block, and stack display styles
-- 💡 Easily theme and style every toast
-- 🧠 Dev playground to preview and generate toast code
+- 🪄 Simple API
+- 🔔 Notification mode with user image
+- 🔁 Queue system (max 3 toasts at a time)
+- 🎨 Fully customizable styles & icons
+- ⚛️ React 18+ support
 
 ---
 
 ## 📦 Installation
 
 ```bash
-npm install toastface
-# or
-yarn add toastface
-
-
+npm install toast-face
 
 

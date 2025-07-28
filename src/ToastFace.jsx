@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import toast from './toastStore';
+import './styles/toast-face.css';
+
 import {
   CheckCircle,
   XCircle,
@@ -16,7 +18,7 @@ const colors = {
   info: '#2563eb',
   default: '#334155',
   custom: '#7c3aed',
-  notification: '#0ea5e9', // 🟦 blue-ish for example
+  notification: '#0ea5e9', 
 };
 
 function hexToRgba(hex, alpha = 0.3) {
@@ -349,25 +351,8 @@ export default function ToastFace({
                   from { transform: scaleX(1); }
                   to { transform: scaleX(0); }
                 }
-                @keyframes popup-in {
-                  from { scale: 0.85;  }
-                  to {  scale:1;  }
-                }
-                  @keyframes popup-out {
-                  from {  scale:1;  opacity:1; }
-                  to {  scale:0.85; opacity:0; }
-                }
 
-                @keyframes slide-out {
-                  from { transform: translateY(0);  }
-                  to { transform: translateY(${isBottom ? '100%' : '-100%'});  }
-                }
-
-                @keyframes fade-out {
-                  from { opacity: 1; }
-                  to { opacity: 0; }
-                }
-
+                
                 @keyframes slide-in {
                   from { transform: translateY(${isBottom ? '100%' : '-100%'});  }
                   to { transform: translateY(0);  }
@@ -376,57 +361,6 @@ export default function ToastFace({
                   from { transform: translateY(0);  opacity:1;}
                   to { transform: translateY(${isBottom ? '100%' : '-100%'});  opacity:0;}
                 }
-
-                @keyframes slideLeft-in {
-                  from { translate: -100% 0;  }
-                  to { translate: 0 0;  }
-                }
-
-                @keyframes slideLeft-out {
-                  from { translate: 0 0; opacity:1; }
-                  to { translate: -100% 0;  opacity:0;}
-                }
-
-                @keyframes slideRight-in {
-                  from { translate: 100% 0;  }
-                  to { translate: 0 0;  }
-                }
-
-                @keyframes slideRight-out {
-                  from { translate: 0 0;  opacity:1;}
-                  to { translate: 100% 0;  opacity:0;}
-                }
-
-                @keyframes slideUp-in {
-                  from { translate: 0 100%;  }
-                  to { translate: 0 0;  }
-                }
-
-                @keyframes slideUp-out {
-                  from { translate: 0 0;  opacity:1;}
-                  to { translate: 0 100%;  opacity:0;}
-                }
-
-                @keyframes slideDown-in {
-                  from { translate: 0 -100%;  }
-                  to { translate: 0 0;  }
-                }
-
-                @keyframes slideDown-out {
-                  from { translate: 0 0;  opacity:1;}
-                  to { translate: 0 -100%;  opacity:0;}
-                }
-                
-                @keyframes squeezy-in {
-                  from { translate: 0 0; scale: 0.8 1.2;  }
-                  to { translate: 0 0; scale: 1 1;  }
-                }
-
-                @keyframes squeezy-out {
-                  from { translate: 0 0; scale: 1 1;  opacity:1;}
-                  to { translate: 0 0; scale: 1.2 0.8;  opacity:0;}
-                }
-
 
 
               `}</style>
