@@ -4,8 +4,8 @@ import path from 'path';
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 
 export default defineConfig({
+  plugins: [cssInjectedByJsPlugin()],
   build: {
-    plugins: [cssInjectedByJsPlugin()],
     lib: {
       entry: path.resolve(__dirname, 'src/index.js'),
       name: 'ToastFace',

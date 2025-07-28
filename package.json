@@ -1,6 +1,6 @@
 {
   "name": "toast-face",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "description": "A modern and customizable toast notification library for React",
   "main": "dist/index.js",
   "module": "dist/index.es.js",

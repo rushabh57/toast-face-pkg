@@ -118,27 +118,27 @@ export default function ToastFace({
   let orderedToasts = [...toasts];
   if (stack === 'queue' && isBottom) orderedToasts.reverse();
 
-  useEffect(() => {
-    toasts.forEach((t) => {
-      if (!t.duration || hoveredId === t.id) return;
+  // useEffect(() => {
+  //   toasts.forEach((t) => {
+  //     if (!t.duration || hoveredId === t.id) return;
 
-      const now = performance.now();
-      const start = startTimes.current[t.id] ?? now;
-      const elapsed = now - start;
-      const remaining = Math.max(t.duration - elapsed, 0);
+  //     const now = performance.now();
+  //     const start = startTimes.current[t.id] ?? now;
+  //     const elapsed = now - start;
+  //     const remaining = Math.max(t.duration - elapsed, 0);
 
-      if (!timers.current[t.id]) {
-        timers.current[t.id] = setTimeout(() => {
-          toast.remove(t.id);
-          delete timers.current[t.id];
-        }, remaining);
-      }
-    });
+  //     if (!timers.current[t.id]) {
+  //       timers.current[t.id] = setTimeout(() => {
+  //         toast.remove(t.id);
+  //         delete timers.current[t.id];
+  //       }, remaining);
+  //     }
+  //   });
 
-    return () => {
-      Object.values(timers.current).forEach(clearTimeout);
-    };
-  }, [toasts, hoveredId]);
+  //   return () => {
+  //     Object.values(timers.current).forEach(clearTimeout);
+  //   };
+  // }, [toasts, hoveredId]);
 
   return (
     <div
@@ -313,18 +313,32 @@ export default function ToastFace({
                       overflow: 'hidden',
                     }}
                   >
-                    <div
-                      key={animationKey + t.id}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        background: '#fff',
-                        transformOrigin: 'left',
-                        animation: `loader-${t.id} ${t.duration ?? 3000}ms linear forwards`,
-                        animationPlayState: isHovered ? 'paused' : 'running',
-                        opacity: isHovered ? 0.5 : 1,
-                      }}
-                    />
+                  {
+                    (() => {
+                      const now = performance.now();
+                      const startTime = startTimes.current[t.id] || now;
+                      const elapsed = now - startTime;
+                      const total = t.duration ?? 3000;
+
+                      return (
+                        <div
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            background: '#fff',
+                            transformOrigin: 'left',
+                            animation: `loader-${t.id} ${total}ms linear forwards`,
+                            // animationDelay: `-${elapsed}ms`,
+                            animationPlayState: isHovered ? 'paused' : 'running',
+                            opacity: isHovered ? 0.5 : 1,
+                          }}
+                        />
+                      );
+                    })()
+                  }
+
+
+
                   </div>
                 )}
               </div>
@@ -361,6 +375,72 @@ export default function ToastFace({
                   from { transform: translateY(0);  opacity:1;}
                   to { transform: translateY(${isBottom ? '100%' : '-100%'});  opacity:0;}
                 }
+
+                @keyframes popup-in {
+    from { scale: 0.85;  }
+    to {  scale:1;  }
+  }
+    @keyframes popup-out {
+    from {  scale:1;  opacity:1; }
+    to {  scale:0.85; opacity:0; }
+  }
+
+  @keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  @keyframes slideLeft-in {
+    from { translate: -100% 0;  }
+    to { translate: 0 0;  }
+  }
+
+  @keyframes slideLeft-out {
+    from { translate: 0 0; opacity:1; }
+    to { translate: -100% 0;  opacity:0;}
+  }
+
+  @keyframes slideRight-in {
+    from { translate: 100% 0;  }
+    to { translate: 0 0;  }
+  }
+
+  @keyframes slideRight-out {
+    from { translate: 0 0;  opacity:1;}
+    to { translate: 100% 0;  opacity:0;}
+  }
+
+  @keyframes slideUp-in {
+    from { translate: 0 100%;  }
+    to { translate: 0 0;  }
+  }
+
+  @keyframes slideUp-out {
+    from { translate: 0 0;  opacity:1;}
+    to { translate: 0 100%;  opacity:0;}
+  }
+
+  @keyframes slideDown-in {
+    from { translate: 0 -100%;  }
+    to { translate: 0 0;  }
+  }
+
+  @keyframes slideDown-out {
+    from { translate: 0 0;  opacity:1;}
+    to { translate: 0 -100%;  opacity:0;}
+  }
+  
+  @keyframes squeezy-in {
+    from { translate: 0 0; scale: 0.8 1.2;  }
+    to { translate: 0 0; scale: 1 1;  }
+  }
+
+  @keyframes squeezy-out {
+    from { translate: 0 0; scale: 1 1;  opacity:1;}
+    to { translate: 0 0; scale: 1.2 0.8;  opacity:0;}
+  }
+
+
 
 
               `}</style>
